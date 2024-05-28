@@ -1,36 +1,40 @@
-// Array
-let names = ['luigi', 'mario', 'yoshi'];
+// explicit type: explicitly giving a variable a type
+let character: string;
+let age: number;
+let isLoggedIn: boolean;
 
-names.push('toad');
-// names.push(3);
-// names[0] = 3
+// age = 'luigi';
+age = 30;
 
- let numbers = [10, 20, 30, 40];
- numbers.push(25);
-//  numbers.push('shawn');
-// numbers[1] = 'shaun';
+// isLoggedIn = 25;
+isLoggedIn = true;
 
-let mixed = ['Ken', 4, 'Chun-Li', 8, 9]
+// arrays
+let ninjas: string[] = [];
+
+ninjas.push('yoshi');
+ninjas = ['mario', 'luigi'];
+
+// union types
+let mixed: (string|number|boolean)[] = [];
 
 mixed.push(5);
-mixed.push('ryu');
-mixed[0] = 3;
+mixed.push('hello');
+mixed.push(true);
+console.log(mixed);
 
-// Object
-let ninja = {
-    name: 'mario',
-    belt: 'black',
-    age: 30
-}
+let uid: number|string;
 
-ninja.age = 40;
-ninja.name = 'Ryu';
-// ninja.age = 'Hi';
-// ninja.skills = ['fighting', 'sneaking']
+uid = 123;
+uid = '123';
 
-ninja = {
-    name: 'yoshi',
-    belt: 'blue',
-    age: 90,
-    // skills: []
+//objects
+let ninjaOne: object;
+ninjaOne = {name: 'yoshi', age: 30}
+// ninjaOne = []; This is allowed because an array is a type of object
+
+let ninjaTwo: {
+    name: string,
+    age: number,
+    beltColour: string,
 }
