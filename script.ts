@@ -1,40 +1,17 @@
-// explicit type: explicitly giving a variable a type
-let character: string;
-let age: number;
-let isLoggedIn: boolean;
+// "any" type
+let age: any = 25;
 
-// age = 'luigi';
-age = 30;
+age = true;
+console.log(age);
+age = 'hello';
+console.log(age);
+age = {name: 'luigi'};
+console.log(age);
 
-// isLoggedIn = 25;
-isLoggedIn = true;
-
-// arrays
-let ninjas: string[] = [];
-
-ninjas.push('yoshi');
-ninjas = ['mario', 'luigi'];
-
-// union types
-let mixed: (string|number|boolean)[] = [];
-
+let mixed: any[] = [];
 mixed.push(5);
-mixed.push('hello');
-mixed.push(true);
+mixed.push("mario");
+mixed.push(false);
 console.log(mixed);
 
-let uid: number|string;
-
-uid = 123;
-uid = '123';
-
-//objects
-let ninjaOne: object;
-ninjaOne = {name: 'yoshi', age: 30}
-// ninjaOne = []; This is allowed because an array is a type of object
-
-let ninjaTwo: {
-    name: string,
-    age: number,
-    beltColour: string,
-}
+let ninja: { name: any, age: any };
