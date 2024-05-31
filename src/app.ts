@@ -1,14 +1,14 @@
 // classes
 class Invoice {
-    client: string;
-    details: string;
-    amount: number;
+    // readonly client: string;
+    // private details: string;
+    // public amount: number;
 
-    constructor(c: string, d: string, a:number){
-        this.client = c;
-        this.details = d;
-        this.amount = a;
-    }
+    constructor( // This only works with access modifiers
+        readonly client: string,
+        private details: string,
+        public amount: number,
+    ){}
 
     format(){
         return `${this.client} owes £${this.amount} for ${this.details}`
@@ -22,12 +22,9 @@ let invoices: Invoice[] = [];
 invoices.push(inOne)
 invoices.push(inTwo)
 
-inOne.client = 'yoshi';
-inTwo.amount = 200;
-
-console.log(inOne, inTwo);
-
-console.log(invoices);
+invoices.forEach(inv => {
+    console.log(inv.client, inv.amount, inv.format())
+})
 
 const form = document.querySelector(".new-item-form") as HTMLFormElement;
 
