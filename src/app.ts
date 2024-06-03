@@ -18,42 +18,31 @@ const list = new ListTemplate(ul)
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 
+  let values: [string, string, number] = [toFrom.value, details.value, amount.valueAsNumber];
+
   let doc: HasFormatter;
 
   if (type.value === 'invoice') {
-    doc = new Invoice(toFrom.value, details.value, amount.valueAsNumber);
+    doc = new Invoice(...values);
   } else {
-    doc = new Payment(toFrom.value, details.value, amount.valueAsNumber);
+    doc = new Payment(...values);
   }
 
   list.render(doc, type.value, 'end')
 });
 
-// ENUMS: They automatically associate themselves with the number of their index
-enum ResourceType { book, character, director, film, person, author }
+// tuples
 
-interface Resource<T> {
-    uid: number,
-    resourceType: number,
-    data: T
-}
+let arr = ['ryu', 25, true];
+arr[0] = false;
+arr[1] = 'yoshi';
+arr = [30, false, 'yoshi'];
 
-const docTwo: Resource<object> = {
-    uid: 1,
-    resourceType: ResourceType.person,
-    data: {name: 'yoshi', age: 40}
-}
+let tup: [string, number, boolean] = ['ryu', 25, true];
+// tup[0] = false;
+tup[0] = 'ken';
+// tup[1] = 'hi';
+tup[1] = 40;
 
-const docThree: Resource<object> = {
-    uid: 2,
-    resourceType: ResourceType.book,
-    data: { title: "Omniscient Reader's Viewpoint" }
-}
-
-const docFour: Resource<object> = {
-    uid: 3,
-    resourceType: ResourceType.character,
-    data: { name: "Kim Dokja" }
-}
-
-console.log(docTwo, docThree, docFour)
+let student: [string, number];
+student = ['Ken', 123];

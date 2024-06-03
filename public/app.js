@@ -12,38 +12,25 @@ const ul = document.querySelector("ul");
 const list = new ListTemplate(ul);
 form.addEventListener("submit", (e) => {
     e.preventDefault();
+    let values = [toFrom.value, details.value, amount.valueAsNumber];
     let doc;
     if (type.value === 'invoice') {
-        doc = new Invoice(toFrom.value, details.value, amount.valueAsNumber);
+        doc = new Invoice(...values);
     }
     else {
-        doc = new Payment(toFrom.value, details.value, amount.valueAsNumber);
+        doc = new Payment(...values);
     }
     list.render(doc, type.value, 'end');
 });
-// ENUMS: They automatically associate themselves with the number of their index
-var ResourceType;
-(function (ResourceType) {
-    ResourceType[ResourceType["book"] = 0] = "book";
-    ResourceType[ResourceType["character"] = 1] = "character";
-    ResourceType[ResourceType["director"] = 2] = "director";
-    ResourceType[ResourceType["film"] = 3] = "film";
-    ResourceType[ResourceType["person"] = 4] = "person";
-    ResourceType[ResourceType["author"] = 5] = "author";
-})(ResourceType || (ResourceType = {}));
-const docTwo = {
-    uid: 1,
-    resourceType: ResourceType.person,
-    data: { name: 'yoshi', age: 40 }
-};
-const docThree = {
-    uid: 2,
-    resourceType: ResourceType.book,
-    data: { title: "Omniscient Reader's Viewpoint" }
-};
-const docFour = {
-    uid: 3,
-    resourceType: ResourceType.character,
-    data: { name: "Kim Dokja" }
-};
-console.log(docTwo, docThree, docFour);
+// tuples
+let arr = ['ryu', 25, true];
+arr[0] = false;
+arr[1] = 'yoshi';
+arr = [30, false, 'yoshi'];
+let tup = ['ryu', 25, true];
+// tup[0] = false;
+tup[0] = 'ken';
+// tup[1] = 'hi';
+tup[1] = 40;
+let student;
+student = ['Ken', 123];
