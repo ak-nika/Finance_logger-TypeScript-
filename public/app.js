@@ -21,25 +21,29 @@ form.addEventListener("submit", (e) => {
     }
     list.render(doc, type.value, 'end');
 });
-// GENERICS
-const addUID = (obj) => {
-    let uid = Math.floor(Math.random() * 100);
-    return Object.assign(Object.assign({}, obj), { uid });
-};
-let docOne = addUID({ name: 'yoshi', age: 40 });
-console.log(docOne);
+// ENUMS: They automatically associate themselves with the number of their index
+var ResourceType;
+(function (ResourceType) {
+    ResourceType[ResourceType["book"] = 0] = "book";
+    ResourceType[ResourceType["character"] = 1] = "character";
+    ResourceType[ResourceType["director"] = 2] = "director";
+    ResourceType[ResourceType["film"] = 3] = "film";
+    ResourceType[ResourceType["person"] = 4] = "person";
+    ResourceType[ResourceType["author"] = 5] = "author";
+})(ResourceType || (ResourceType = {}));
 const docTwo = {
     uid: 1,
-    resourceType: 'invoice',
+    resourceType: ResourceType.person,
     data: { name: 'yoshi', age: 40 }
 };
 const docThree = {
     uid: 2,
-    resourceType: 'invoice',
-    data: 'yoshi'
+    resourceType: ResourceType.book,
+    data: { title: "Omniscient Reader's Viewpoint" }
 };
 const docFour = {
     uid: 3,
-    resourceType: 'invoice',
-    data: ['yoshi', 'luigi']
+    resourceType: ResourceType.character,
+    data: { name: "Kim Dokja" }
 };
+console.log(docTwo, docThree, docFour);
