@@ -1,6 +1,6 @@
 import { ListTemplate } from "./classes/ListTemplate.js";
-import { Invoice } from "./classes/invoice.js";
-import { Payment } from "./classes/payment.js";
+import { Invoice } from "./classes/Invoice.js";
+import { Payment } from "./classes/Payment.js";
 import { HasFormatter } from "./interfaces/hasFormatter.js";
 
 const form = document.querySelector(".new-item-form") as HTMLFormElement;
